@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const uri = process.env.MONGO_URI;
+
 const connectDB = async () => {
   try {
-    console.log("MONGO_URI:", process.env.MONGO_URI);
+    console.log("MONGO_URI:", uri);
 
-    await mongoose.connect(process.env.MONGO_URI); 
+    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
 
     console.log("MongoDB Connected Successfully");
   } catch (error) {

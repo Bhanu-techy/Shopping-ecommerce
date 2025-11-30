@@ -16,7 +16,9 @@ connectDB();
 
 app.use(express.json());
 
-app.listen(process.env.PORT || 5000, () => console.log("Server running"));
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => console.log("Server running"));
 
 app.get("/api/users", async (req, res) =>{
     const userData = await userSChema.find()
